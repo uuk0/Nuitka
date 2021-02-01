@@ -700,9 +700,12 @@ def buildDeleteStatementFromDecoded(provider, kind, detail, source_ref):
                 )
             )
 
-        return makeStatementsSequenceOrStatement(
-            statements=result, source_ref=source_ref
-        )
+        if result:
+            return makeStatementsSequenceOrStatement(
+                statements=result, source_ref=source_ref
+            )
+        else:
+            return None
     else:
         assert False, (kind, detail, source_ref)
 
